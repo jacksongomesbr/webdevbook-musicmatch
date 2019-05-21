@@ -1,0 +1,16 @@
+<section *ngIf="musica">
+  <h1 class="mb-4 mt-5 border-bottom">{{musica.titulo}}</h1>
+  <div>
+    <span *ngIf="musica.artistas.length == 1"><i class="text-muted fas fa-user"></i></span>
+    <span *ngIf="musica.artistas.length != 1"><i class="text-muted fas fa-users"></i></span>
+    &nbsp;
+    <span *ngFor="let artista of musica.artistas; last as ultimo">
+      <a [routerLink]="['/artistas', artista.id]">{{ artista.nome }}</a><span *ngIf="!ultimo">, </span>
+    </span>
+  </div>
+  <div>
+    <i class="text-muted fas fa-tag"></i>
+    &nbsp;
+    {{musica.genero.nome}}
+  </div>
+</section>

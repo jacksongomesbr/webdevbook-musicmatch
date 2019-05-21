@@ -1,0 +1,12 @@
+<section class="mt-5">
+  <ul>
+    <li *ngFor="let musica of musicas">
+      <a [routerLink]="[ '/musicas', musica.id ]">
+        <strong>{{ musica.titulo }} </strong> -
+        <span *ngFor="let artista of musica.artistas; last as ultimo">
+          {{ artista.nome }}<span *ngIf="!ultimo">, </span>
+        </span>
+      </a>
+    </li>
+  </ul>
+</section>
