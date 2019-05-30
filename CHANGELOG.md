@@ -2,6 +2,15 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.2.0](https://github.com/jacksongomesbr/webdevbook-musicmatch/compare/v1.1.0...v1.2.0) (2019-05-30)
+
+
+### Features
+
+* adiciona dependência do compodoc ([daf216e](https://github.com/jacksongomesbr/webdevbook-musicmatch/commit/daf216e))
+
+
+
 ## 1.1.0 (2019-05-30)
 
 
