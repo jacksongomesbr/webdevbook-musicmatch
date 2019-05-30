@@ -9,7 +9,7 @@
     "lint": "ng lint",
     "e2e": "ng e2e",
     "release": "standard-version",
-    "compodoc": "npx compodoc -s -p src/tsconfig.app.json"
+    "compodoc": "npx compodoc -s -p src/tsconfig.app.json -n \"Documentação do MusicMatch\""
   },
   "private": true,
   "dependencies": {

@@ -15,6 +15,10 @@ Este é um software utilizado na disciplina **Linguagem de Programação para a 
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 7.3.8.
 
+## Documentação
+
+Para gerar a documentação (utiliza o **compodoc**) execute `npm run compodoc`.
+
 ## Development server
 
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
