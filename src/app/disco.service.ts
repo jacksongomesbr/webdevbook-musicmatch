@@ -236,6 +236,11 @@ export class DiscoService {
   }
 
 
+  /**
+   * Encontra e retorna a lista de músicas de um gênero musical.
+   * 
+   * @param genero O gênero musical para encontrar as músicas
+   */
   listaDeMusicasDoGenero(genero) {
     if (isNumber(genero) || isString(genero)) {
       genero = this.encontrarGenero(genero);
@@ -249,6 +254,11 @@ export class DiscoService {
     return lista;
   }
 
+  /**
+   * Preenche o objeto `genero` com a lista de músicas dele.
+   * 
+   * @param genero O gênero musical para ser preenchido
+   */
   preencherObjetoGenero(genero) {
     if (genero) {
       genero.musicas = this.listaDeMusicasDoGenero(genero);
@@ -300,6 +310,9 @@ export class DiscoService {
         }
       }
     }
+    for (let musica of lista) {
+      this.preencherObjetoMusica(musica);
+    }
     return lista;
   }
 
@@ -334,27 +347,59 @@ export class DiscoService {
     musica.naoGostar = 1;
   }
 
-  pesquisar(busca) {
+  /**
+   * Faz a pesquisa por músicas, gêneros musicais e artistas e retorna a lista dos resultados.
+   * 
+   * A pesquisa considera:
+   * 
+   * a) parte do título da música
+   * b) parte do nome do gênero musical
+   * c) parte do nome do artista
+   * 
+   * A lista de resultados contém itens nesta ordem: músicas, gêneros musicais e artistas.
+   * 
+   * Ainda, o método adiciona, para cada item, conforme seu tipo, o atributo `tipo`:
+   * 
+   * a) para músicas, contém o valor `música`
+   * b) para gêneros musicais, contém o valor `gênero`
+   * c) para artistas, contém o valor `artista`
+   * 
+   * Cada item é preenchido conforme seu tipo, usando `preencherObjetoMusica()`,
+   * `preencherObjetoGenero()` e `preencherObjetoArtista()`.
+   * 
+   * @param busca A string de busca
+   * @returns Array<any> Um array de objetos como resultado da pesquisa
+   */
+  pesquisar(busca): Array<any> {
     let lista = [];
     if (!busca) {
       return lista;
     }
     busca = busca.toLowerCase();
+
+    // encontra as músicas
     let musicas = this.musicas.filter(musica => musica.titulo.toLowerCase().indexOf(busca) != -1);
+    // preenche cada objeto e define o atributo `tipo`
     for (let musica of musicas) {
       this.preencherObjetoMusica(musica);
       musica.tipo = 'música';
     }
+
+    // encontra os gêneros, preenche cada objeto e define o atributo `tipo`
     let generos = this.generos.filter(genero => genero.nome.toLowerCase().indexOf(busca) != -1);
     for (let genero of generos) {
       this.preencherObjetoGenero(genero);
       genero.tipo = 'gênero';
     }
+
+    // encontra os artistas, preenche cada objeto e define o atributo `tipo`
     let artistas = this.artistas.filter(artista => artista.nome.toLowerCase().indexOf(busca) != -1);
     for (let artista of artistas) {
       this.preencherObjetoArtista(artista);
       artista.tipo = 'artista';
     }
+
+    // concatena as listas em uma só para gerar o resultado
     return lista.concat(musicas, generos, artistas);
   }
 
