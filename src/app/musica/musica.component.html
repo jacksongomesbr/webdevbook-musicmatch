@@ -11,6 +11,24 @@
   <div>
     <i class="text-muted fas fa-tag"></i>
     &nbsp;
-    {{musica.genero.nome}}
+    <a [routerLink]="[ '/generos', musica.genero.id ]">{{musica.genero.nome}}</a>
+  </div>
+  <div class="mt-2">
+    <button class="btn btn-success" (click)="gostar()">
+      Gostar
+      <span class="badge badge-success bg-dark">{{musica.gostar}}</span>
+    </button>
+    &nbsp;
+    <button class="btn btn-danger" (click)="naoGostar()">
+      Não gostar
+      <span class="badge badge-danger bg-dark">{{musica.naoGostar}}</span>
+    </button>
+  </div>
+  <div class="mt-4">
+    <ul>
+      <li *ngFor="let m of relacionadas">
+        <a [routerLink]="['/musicas', m.id]">{{m.titulo}}</a>
+      </li>
+    </ul>
   </div>
 </section>

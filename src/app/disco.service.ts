@@ -129,7 +129,9 @@ export class DiscoService {
       id: this.musicas.length + 1,
       titulo,
       idGenero: g.id,
-      artistas: listaArtistas
+      artistas: listaArtistas,
+      gostar: 0,
+      naoGostar: 0
     };
     this.musicas.push(musica);
     return musica;
@@ -233,6 +235,74 @@ export class DiscoService {
     }
   }
 
+
+  listaDeMusicasDoGenero(genero) {
+    if (isNumber(genero) || isString(genero)) {
+      genero = this.encontrarGenero(genero);
+    }
+    let lista = this.musicas.filter(musica =>
+      musica.idGenero == genero.id
+    );
+    for (let musica of lista) {
+      this.preencherObjetoMusica(musica);
+    }
+    return lista;
+  }
+
+  preencherObjetoGenero(genero) {
+    if (genero) {
+      genero.musicas = this.listaDeMusicasDoGenero(genero);
+    }
+  }
+
+  /**
+   * Identifica e retorna a lista de músicas relacionadas com base na informação de a música
+   * estar estar curtida ou não:
+   * 
+   * a) se estiver sendo curtida: o atributo `gostar` tem valor `1`, então retorna todas as 
+   * músicas do mesmo gênero e as músicas dos mesmos artistas da música de entrada; ou
+   * b) se a música não estiver sendo curtida: 
+   * 
+   * @param musica A música usada como entrada para encontrar as músicas relacioandas
+   */
+  listaDeMusicasRelacionadas(musica) {
+    let lista = [];
+    if (musica.gostar == 1) {
+      // obtém as músicas do mesmo gênero da música atual
+      lista = lista.concat(this.listaDeMusicasDoGenero(musica.genero).filter(m => m.id != musica.id));
+      // obtém as músicas dos mesmos artistas da música atual
+      for (const artista of musica.artistas) {
+        // para cada música do artista...
+        for (const m of this.listaDeMusicasDoArtista(artista).filter(m => m.id != musica.id)) {
+          // adiciona a música na lista, se ela já não estiver
+          if (lista.indexOf(m) == -1) {
+            lista.push(m);
+          }
+        }
+      }
+    } else if (musica.naoGostar == 1) {
+      // obtém as músicas que não sejam mesmo gênero da música atual
+      lista = lista.concat(this.musicas.filter(m => m.idGenero != musica.idGenero));
+      // obtém as músicas que não sejam dos mesmos artistas da música atual
+      const artistas = [];
+      // para cada artista cadastrado...
+      for (const artista of this.artistas) {
+        // se o artista não for um dos artistas da música...
+        if (musica.artistas.indexOf(artista) != -1) {
+          artistas.push(artista);
+        }
+      }
+      for (const artista of artistas) {
+        for (const m of this.listaDeMusicasDoArtista(artista).filter(m => m.id != musica.id)) {
+          if (lista.indexOf(m) == -1) {
+            lista.push(m);
+          }
+        }
+      }
+    }
+    return lista;
+  }
+
   /**
    * Retorna a lista de artistas e preenche o artibuto `musicas` com a lista das
    * músicas dos respectivos artistas.
@@ -243,4 +313,49 @@ export class DiscoService {
     }
     return this.artistas;
   }
+
+  /**
+   * Gostar de uma música.
+   * 
+   * @param musica A música que será curtida
+   */
+  gostar(musica) {
+    musica.gostar = 1;
+    musica.naoGostar = 0;
+  }
+
+  /**
+   * Não gostar de uma música.
+   * 
+   * @param musica A música que não será curtida
+   */
+  naoGostar(musica) {
+    musica.gostar = 0;
+    musica.naoGostar = 1;
+  }
+
+  pesquisar(busca) {
+    let lista = [];
+    if (!busca) {
+      return lista;
+    }
+    busca = busca.toLowerCase();
+    let musicas = this.musicas.filter(musica => musica.titulo.toLowerCase().indexOf(busca) != -1);
+    for (let musica of musicas) {
+      this.preencherObjetoMusica(musica);
+      musica.tipo = 'música';
+    }
+    let generos = this.generos.filter(genero => genero.nome.toLowerCase().indexOf(busca) != -1);
+    for (let genero of generos) {
+      this.preencherObjetoGenero(genero);
+      genero.tipo = 'gênero';
+    }
+    let artistas = this.artistas.filter(artista => artista.nome.toLowerCase().indexOf(busca) != -1);
+    for (let artista of artistas) {
+      this.preencherObjetoArtista(artista);
+      artista.tipo = 'artista';
+    }
+    return lista.concat(musicas, generos, artistas);
+  }
+
 }

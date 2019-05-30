@@ -1,0 +1,14 @@
+<section>
+  <h1 class="mb-4 mt-5 border-bottom">Pesquisa</h1>
+  <p>Utilize entrada de texto a seguir para realizar a pesquisa de músicas, artistas e gêneros musicais.</p>
+  <input type="text" name="busca" class="form-control form-control-lg" [(ngModel)]="busca">
+  <div class="mt-4">
+    <ul>
+      <li *ngFor="let item of disco.pesquisar(busca)">
+        <a *ngIf="item.tipo == 'música'" [routerLink]="[ '/musicas', item.id ]">{{item.titulo}}</a>
+        <a *ngIf="item.tipo == 'gênero'" [routerLink]="[ '/generos', item.id ]">{{item.nome}}</a>
+        <a *ngIf="item.tipo == 'artista'" [routerLink]="[ '/artistas', item.id ]">{{item.nome}}</a>
+      </li>
+    </ul>
+  </div>
+</section>

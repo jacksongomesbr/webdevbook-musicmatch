@@ -1,17 +1,9 @@
 <section>
-    <h1 class="mb-4 mt-5 border-bottom">Músicas</h1>
-    <div *ngFor="let genero of generos">
-        <h2>{{genero.nome}}</h2>
-        <ul>
-          <li *ngFor="let musica of genero.musicas">
-            <a [routerLink]="[ '/musicas', musica.id ]">
-              <strong>{{ musica.titulo }} </strong> -
-              <span *ngFor="let artista of musica.artistas; last as ultimo">
-                {{ artista.nome }}<span *ngIf="!ultimo">, </span>
-              </span>
-            </a>
-          </li>
-        </ul>
-      </div>
+  <h1 class="mb-4 mt-5 border-bottom">Músicas</h1>
+  <p>Encontre músicas pelos gêneros musicais</p>
+  <ul>
+    <li *ngFor="let genero of generos">
+      <a [routerLink]="[ '/generos', genero.id ]">{{genero.nome}}</a>
+    </li>
+  </ul>
 </section>
-
