@@ -40,16 +40,16 @@ export class DiscoService {
    * 
    * @param nome Nome do gênero
    */
-  encontrarGeneroPorNome(nome) {
+  encontrarGeneroPorNome(nome: string) {
     return this.generos.find(genero => genero.nome == nome);
   }
 
   /**
    * Encontra e retorna um gênero da lista de gêneros.
    * 
-   * @param genero Nome ou identificador do gênero
+   * @param {number|string} genero Nome ou identificador do gênero
    */
-  encontrarGenero(genero) {
+  encontrarGenero(genero: (number|string)) {
     if (isNumber(genero)) {
       return this.generos.find(g => g.id == genero);
     } else {
@@ -63,7 +63,7 @@ export class DiscoService {
    * @param nome O nome do gênero
    * @param generoPai O nome ou identificador do gênero pai
    */
-  adicionarGenero(nome) {
+  adicionarGenero(nome: string) {
     let genero = this.encontrarGenero(nome);
     if (genero) {
       return genero;
@@ -81,7 +81,7 @@ export class DiscoService {
    * 
    * @param nome Nome do artista
    */
-  adicionarArtista(nome) {
+  adicionarArtista(nome: string) {
     let artista = this.encontrarArtista(nome);
     if (artista) {
       return artista;
@@ -108,7 +108,7 @@ export class DiscoService {
    * @param artistas Os artistas da música; pode ser array de string ou array de número (identificador)
    * @param genero O gênero da música; pode ser string ou identificador
    */
-  adicionarMusica(titulo, artistas, genero) {
+  adicionarMusica(titulo: string, artistas: [], genero: any) {
     let g = this.encontrarGenero(genero);
     if (!g) {
       g = this.adicionarGenero(genero);
@@ -142,7 +142,7 @@ export class DiscoService {
    * 
    * @param id Nome ou identificador do artista
    */
-  encontrarArtista(artista) {
+  encontrarArtista(artista: (number|string)) {
     if (isNumber(artista)) {
       return this.artistas.find(a => a.id == artista);
     } else {
@@ -155,7 +155,7 @@ export class DiscoService {
    * 
    * @param musica Título ou identificador da música
    */
-  encontrarMusica(musica) {
+  encontrarMusica(musica: (number|string)) {
     if (isNumber(musica)) {
       return this.musicas.find(m => m.id == musica);
     } else {
@@ -267,11 +267,11 @@ export class DiscoService {
 
   /**
    * Identifica e retorna a lista de músicas relacionadas com base na informação de a música
-   * estar estar curtida ou não:
+   * estar curtida ou não:
    * 
-   * a) se estiver sendo curtida: o atributo `gostar` tem valor `1`, então retorna todas as 
+   * * se estiver sendo curtida: o atributo `gostar` tem valor `1`, então retorna todas as 
    * músicas do mesmo gênero e as músicas dos mesmos artistas da música de entrada; ou
-   * b) se a música não estiver sendo curtida: 
+   * * se a música não estiver sendo curtida: 
    * 
    * @param musica A música usada como entrada para encontrar as músicas relacioandas
    */
@@ -352,25 +352,26 @@ export class DiscoService {
    * 
    * A pesquisa considera:
    * 
-   * a) parte do título da música
-   * b) parte do nome do gênero musical
-   * c) parte do nome do artista
+   * * parte do título da música
+   * * parte do nome do gênero musical
+   * * parte do nome do artista
    * 
    * A lista de resultados contém itens nesta ordem: músicas, gêneros musicais e artistas.
    * 
    * Ainda, o método adiciona, para cada item, conforme seu tipo, o atributo `tipo`:
    * 
-   * a) para músicas, contém o valor `música`
-   * b) para gêneros musicais, contém o valor `gênero`
-   * c) para artistas, contém o valor `artista`
+   * * para músicas, contém o valor `música`
+   * * para gêneros musicais, contém o valor `gênero`
+   * * para artistas, contém o valor `artista`
    * 
-   * Cada item é preenchido conforme seu tipo, usando `preencherObjetoMusica()`,
-   * `preencherObjetoGenero()` e `preencherObjetoArtista()`.
+   * Cada item é preenchido conforme seu tipo, usando [`preencherObjetoMusica()`]{@link DiscoService#preencherObjetoMusica},
+   * [`preencherObjetoGenero()`]{@link DiscoService#preencherObjetoGenero} 
+   * e [`preencherObjetoArtista()`]{@link DiscoService#preencherObjetoArtista}.
    * 
    * @param busca A string de busca
-   * @returns Array<any> Um array de objetos como resultado da pesquisa
+   * @returns Um array de objetos como resultado da pesquisa
    */
-  pesquisar(busca): Array<any> {
+  pesquisar(busca: string): Array<any> {
     let lista = [];
     if (!busca) {
       return lista;
