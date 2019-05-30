@@ -10,6 +10,7 @@ import { MusicasComponent } from './musicas/musicas.component';
 import { ArtistaComponent } from './artista/artista.component';
 import { GeneroComponent } from './genero/genero.component';
 import { PesquisaComponent } from './pesquisa/pesquisa.component';
+import { MusicaItemComponent } from './musica-item/musica-item.component';
 
 @NgModule({
   declarations: [
@@ -19,7 +20,8 @@ import { PesquisaComponent } from './pesquisa/pesquisa.component';
     MusicasComponent,
     ArtistaComponent,
     GeneroComponent,
-    PesquisaComponent
+    PesquisaComponent,
+    MusicaItemComponent
   ],
   imports: [
     BrowserModule,

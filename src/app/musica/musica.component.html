@@ -27,7 +27,7 @@
   <div class="mt-4">
     <ul>
       <li *ngFor="let m of relacionadas">
-        <a [routerLink]="['/musicas', m.id]">{{m.titulo}}</a>
+        <app-musica-item [musica]="m"></app-musica-item>
       </li>
     </ul>
   </div>
