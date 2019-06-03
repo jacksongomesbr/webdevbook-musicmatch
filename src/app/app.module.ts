@@ -10,7 +10,8 @@ import { MusicasComponent } from './musicas/musicas.component';
 import { ArtistaComponent } from './artista/artista.component';
 import { GeneroComponent } from './genero/genero.component';
 import { PesquisaComponent } from './pesquisa/pesquisa.component';
-import { MusicaItemComponent } from './musica-item/musica-item.component';
+import { HttpClientModule } from '@angular/common/http';
+import { ListaDeMusicasComponent } from './lista-de-musicas/lista-de-musicas.component';
 
 @NgModule({
   declarations: [
@@ -21,12 +22,13 @@ import { MusicaItemComponent } from './musica-item/musica-item.component';
     ArtistaComponent,
     GeneroComponent,
     PesquisaComponent,
-    MusicaItemComponent
+    ListaDeMusicasComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    FormsModule
+    FormsModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]

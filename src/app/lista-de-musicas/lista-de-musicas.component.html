@@ -1,0 +1,14 @@
+<div class="list-group">
+  <a *ngFor="let musica of musicas" [routerLink]="['/musicas', musica.id]"
+    class="list-group-item list-group-item-action">
+    <div class="d-flex w-100 justify-content-between">
+      <h5 class="mb-1">{{musica.titulo}}</h5>
+      <small>{{musica.genero.nome}}</small>
+    </div>
+    <small>
+      <span *ngFor="let artista of musica.artistas; last as ultimo">
+        {{ artista.nome }}<span *ngIf="!ultimo">, </span>
+      </span>
+    </small>
+  </a>
+</div>
