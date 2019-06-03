@@ -1,6 +1,6 @@
-<section *ngIf="musica">
+<section *ngIf="musica else carregando">
   <h1 class="mb-4 mt-5 border-bottom">{{musica.titulo}}</h1>
-  <div>
+  <div *ngIf="musica.artistas">
     <span *ngIf="musica.artistas.length == 1"><i class="text-muted fas fa-user"></i></span>
     <span *ngIf="musica.artistas.length != 1"><i class="text-muted fas fa-users"></i></span>
     &nbsp;
@@ -8,7 +8,7 @@
       <a [routerLink]="['/artistas', artista.id]">{{ artista.nome }}</a><span *ngIf="!ultimo">, </span>
     </span>
   </div>
-  <div>
+  <div *ngIf="musica.genero">
     <i class="text-muted fas fa-tag"></i>
     &nbsp;
     <a [routerLink]="[ '/generos', musica.genero.id ]">{{musica.genero.nome}}</a>
@@ -24,11 +24,10 @@
       <span class="badge badge-danger bg-dark">{{musica.naoGostar}}</span>
     </button>
   </div>
-  <div class="mt-4">
-    <ul>
-      <li *ngFor="let m of relacionadas">
-        <app-musica-item [musica]="m"></app-musica-item>
-      </li>
-    </ul>
+  <div class="mt-4" *ngIf="relacionadas">
+    <app-lista-de-musicas [musicas]="relacionadas"></app-lista-de-musicas>
   </div>
 </section>
+<ng-template #carregando>
+  <section>Aguarde. Carregando...</section>
+</ng-template>
