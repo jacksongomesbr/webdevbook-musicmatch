@@ -1,0 +1,217 @@
+[
+    {
+        "id": 1,
+        "titulo": "O Show Tem Que Continuar",
+        "tipo": "música"
+    },
+    {
+        "id": 1,
+        "nome": "Samba de Raiz",
+        "tipo": "gênero"
+    },
+    {
+        "id": 1,
+        "nome": "Beth Carvalho",
+        "tipo": "artista"
+    },
+    {
+        "id": 2,
+        "titulo": "Foi Um Rio Que Passou Em Minha Vida",
+        "tipo": "música"
+    },
+    {
+        "id": 2,
+        "nome": "Paulinho da Viola",
+        "tipo": "artista"
+    },
+    {
+        "id": 3,
+        "titulo": "Canta Canta, Minha Gente",
+        "tipo": "música"
+    },
+    {
+        "id": 3,
+        "nome": "Martinho Da Vila",
+        "tipo": "artista"
+    },
+    {
+        "id": 4,
+        "titulo": "Deixa A Vida Me Levar",
+        "tipo": "música"
+    },
+    {
+        "id": 4,
+        "nome": "Zeca Pagodinho",
+        "tipo": "artista"
+    },
+    {
+        "id": 5,
+        "titulo": "Brisa",
+        "tipo": "música"
+    },
+    {
+        "id": 2,
+        "nome": "Pop Brasil",
+        "tipo": "gênero"
+    },
+    {
+        "id": 5,
+        "nome": "IZA",
+        "tipo": "artista"
+    },
+    {
+        "id": 6,
+        "titulo": "Onda diferente (feat. Papatinho)",
+        "tipo": "música"
+    },
+    {
+        "id": 6,
+        "nome": "Anitta",
+        "tipo": "artista"
+    },
+    {
+        "id": 7,
+        "nome": "Ludmilla",
+        "tipo": "artista"
+    },
+    {
+        "id": 8,
+        "nome": "Snoop Dogg",
+        "tipo": "artista"
+    },
+    {
+        "id": 9,
+        "nome": "Papatinho",
+        "tipo": "artista"
+    },
+    {
+        "id": 7,
+        "titulo": "Pior Que Possa Imaginar",
+        "tipo": "música"
+    },
+    {
+        "id": 10,
+        "nome": "Luísa Sonza",
+        "tipo": "artista"
+    },
+    {
+        "id": 8,
+        "titulo": "Hoje Lembrei Do Teu Amor",
+        "tipo": "música"
+    },
+    {
+        "id": 11,
+        "nome": "Tiago Iorc",
+        "tipo": "artista"
+    },
+    {
+        "id": 9,
+        "titulo": "Ousado Amor",
+        "tipo": "música"
+    },
+    {
+        "id": 3,
+        "nome": "Sucessos Gospel",
+        "tipo": "gênero"
+    },
+    {
+        "id": 12,
+        "nome": "Isaias Saad",
+        "tipo": "artista"
+    },
+    {
+        "id": 10,
+        "titulo": "Tua Graça Me Basta",
+        "tipo": "música"
+    },
+    {
+        "id": 13,
+        "nome": "Davi Sacer",
+        "tipo": "artista"
+    },
+    {
+        "id": 14,
+        "nome": "Preto no Branco",
+        "tipo": "artista"
+    },
+    {
+        "id": 11,
+        "titulo": "Ele Vem - Ao Vivo",
+        "tipo": "música"
+    },
+    {
+        "id": 15,
+        "nome": "Gabriel Guedes de Almeida",
+        "tipo": "artista"
+    },
+    {
+        "id": 16,
+        "nome": "Gabriela Rocha",
+        "tipo": "artista"
+    },
+    {
+        "id": 12,
+        "titulo": "Autor da Vida",
+        "tipo": "música"
+    },
+    {
+        "id": 17,
+        "nome": "Aline Barros",
+        "tipo": "artista"
+    },
+    {
+        "id": 13,
+        "titulo": "Chega de Saudade",
+        "tipo": "música"
+    },
+    {
+        "id": 4,
+        "nome": "Bossa Nova",
+        "tipo": "gênero"
+    },
+    {
+        "id": 18,
+        "nome": "João Gilberto",
+        "tipo": "artista"
+    },
+    {
+        "id": 14,
+        "titulo": "Samba Da Benção",
+        "tipo": "música"
+    },
+    {
+        "id": 19,
+        "nome": "Vinícius de Moraes",
+        "tipo": "artista"
+    },
+    {
+        "id": 15,
+        "titulo": "Desafinado",
+        "tipo": "música"
+    },
+    {
+        "id": 16,
+        "titulo": "Fotografia",
+        "tipo": "música"
+    },
+    {
+        "id": 20,
+        "nome": "Elis Regina",
+        "tipo": "artista"
+    },
+    {
+        "id": 21,
+        "nome": "Antônio Carlos Jobim",
+        "tipo": "artista"
+    },
+    {
+        "id": 17,
+        "titulo": "Pela luz dos olhos teus",
+        "tipo": "música"
+    },
+    {
+        "id": 22,
+        "nome": "Miúcha",
+        "tipo": "artista"
+    }
+]

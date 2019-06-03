@@ -1,0 +1,326 @@
+[
+    {
+        "id": 1,
+        "nome": "Samba de Raiz",
+        "musicas": [
+            {
+                "id": 1,
+                "titulo": "O Show Tem Que Continuar",
+                "artistas": [
+                    {
+                        "id": 1,
+                        "nome": "Beth Carvalho"
+                    }
+                ],
+                "gostar": 0,
+                "naoGostar": 0,
+                "genero": {
+                    "id": 1,
+                    "nome": "Samba de Raiz"
+                }
+            },
+            {
+                "id": 2,
+                "titulo": "Foi Um Rio Que Passou Em Minha Vida",
+                "artistas": [
+                    {
+                        "id": 2,
+                        "nome": "Paulinho da Viola"
+                    }
+                ],
+                "gostar": 0,
+                "naoGostar": 0,
+                "genero": {
+                    "id": 1,
+                    "nome": "Samba de Raiz"
+                }
+            },
+            {
+                "id": 3,
+                "titulo": "Canta Canta, Minha Gente",
+                "artistas": [
+                    {
+                        "id": 3,
+                        "nome": "Martinho Da Vila"
+                    }
+                ],
+                "gostar": 0,
+                "naoGostar": 0,
+                "genero": {
+                    "id": 1,
+                    "nome": "Samba de Raiz"
+                }
+            },
+            {
+                "id": 4,
+                "titulo": "Deixa A Vida Me Levar",
+                "artistas": [
+                    {
+                        "id": 4,
+                        "nome": "Zeca Pagodinho"
+                    }
+                ],
+                "gostar": 0,
+                "naoGostar": 0,
+                "genero": {
+                    "id": 1,
+                    "nome": "Samba de Raiz"
+                }
+            }
+        ]
+    },
+    {
+        "id": 2,
+        "nome": "Pop Brasil",
+        "musicas": [
+            {
+                "id": 5,
+                "titulo": "Brisa",
+                "artistas": [
+                    {
+                        "id": 5,
+                        "nome": "IZA"
+                    }
+                ],
+                "gostar": 0,
+                "naoGostar": 0,
+                "genero": {
+                    "id": 2,
+                    "nome": "Pop Brasil"
+                }
+            },
+            {
+                "id": 6,
+                "titulo": "Onda diferente (feat. Papatinho)",
+                "artistas": [
+                    {
+                        "id": 6,
+                        "nome": "Anitta"
+                    },
+                    {
+                        "id": 7,
+                        "nome": "Ludmilla"
+                    },
+                    {
+                        "id": 8,
+                        "nome": "Snoop Dogg"
+                    },
+                    {
+                        "id": 9,
+                        "nome": "Papatinho"
+                    }
+                ],
+                "gostar": 0,
+                "naoGostar": 0,
+                "genero": {
+                    "id": 2,
+                    "nome": "Pop Brasil"
+                }
+            },
+            {
+                "id": 7,
+                "titulo": "Pior Que Possa Imaginar",
+                "artistas": [
+                    {
+                        "id": 10,
+                        "nome": "Luísa Sonza"
+                    }
+                ],
+                "gostar": 0,
+                "naoGostar": 0,
+                "genero": {
+                    "id": 2,
+                    "nome": "Pop Brasil"
+                }
+            },
+            {
+                "id": 8,
+                "titulo": "Hoje Lembrei Do Teu Amor",
+                "artistas": [
+                    {
+                        "id": 11,
+                        "nome": "Tiago Iorc"
+                    }
+                ],
+                "gostar": 0,
+                "naoGostar": 0,
+                "genero": {
+                    "id": 2,
+                    "nome": "Pop Brasil"
+                }
+            }
+        ]
+    },
+    {
+        "id": 3,
+        "nome": "Sucessos Gospel",
+        "musicas": [
+            {
+                "id": 9,
+                "titulo": "Ousado Amor",
+                "artistas": [
+                    {
+                        "id": 12,
+                        "nome": "Isaias Saad"
+                    }
+                ],
+                "gostar": 0,
+                "naoGostar": 0,
+                "genero": {
+                    "id": 3,
+                    "nome": "Sucessos Gospel"
+                }
+            },
+            {
+                "id": 10,
+                "titulo": "Tua Graça Me Basta",
+                "artistas": [
+                    {
+                        "id": 13,
+                        "nome": "Davi Sacer"
+                    },
+                    {
+                        "id": 14,
+                        "nome": "Preto no Branco"
+                    }
+                ],
+                "gostar": 0,
+                "naoGostar": 0,
+                "genero": {
+                    "id": 3,
+                    "nome": "Sucessos Gospel"
+                }
+            },
+            {
+                "id": 11,
+                "titulo": "Ele Vem - Ao Vivo",
+                "artistas": [
+                    {
+                        "id": 15,
+                        "nome": "Gabriel Guedes de Almeida"
+                    },
+                    {
+                        "id": 16,
+                        "nome": "Gabriela Rocha"
+                    }
+                ],
+                "gostar": 0,
+                "naoGostar": 0,
+                "genero": {
+                    "id": 3,
+                    "nome": "Sucessos Gospel"
+                }
+            },
+            {
+                "id": 12,
+                "titulo": "Autor da Vida",
+                "artistas": [
+                    {
+                        "id": 17,
+                        "nome": "Aline Barros"
+                    }
+                ],
+                "gostar": 0,
+                "naoGostar": 0,
+                "genero": {
+                    "id": 3,
+                    "nome": "Sucessos Gospel"
+                }
+            }
+        ]
+    },
+    {
+        "id": 4,
+        "nome": "Bossa Nova",
+        "musicas": [
+            {
+                "id": 13,
+                "titulo": "Chega de Saudade",
+                "artistas": [
+                    {
+                        "id": 18,
+                        "nome": "João Gilberto"
+                    }
+                ],
+                "gostar": 0,
+                "naoGostar": 0,
+                "genero": {
+                    "id": 4,
+                    "nome": "Bossa Nova"
+                }
+            },
+            {
+                "id": 14,
+                "titulo": "Samba Da Benção",
+                "artistas": [
+                    {
+                        "id": 19,
+                        "nome": "Vinícius de Moraes"
+                    }
+                ],
+                "gostar": 0,
+                "naoGostar": 0,
+                "genero": {
+                    "id": 4,
+                    "nome": "Bossa Nova"
+                }
+            },
+            {
+                "id": 15,
+                "titulo": "Desafinado",
+                "artistas": [
+                    {
+                        "id": 18,
+                        "nome": "João Gilberto"
+                    }
+                ],
+                "gostar": 0,
+                "naoGostar": 0,
+                "genero": {
+                    "id": 4,
+                    "nome": "Bossa Nova"
+                }
+            },
+            {
+                "id": 16,
+                "titulo": "Fotografia",
+                "artistas": [
+                    {
+                        "id": 20,
+                        "nome": "Elis Regina"
+                    },
+                    {
+                        "id": 21,
+                        "nome": "Antônio Carlos Jobim"
+                    }
+                ],
+                "gostar": 0,
+                "naoGostar": 0,
+                "genero": {
+                    "id": 4,
+                    "nome": "Bossa Nova"
+                }
+            },
+            {
+                "id": 17,
+                "titulo": "Pela luz dos olhos teus",
+                "artistas": [
+                    {
+                        "id": 21,
+                        "nome": "Antônio Carlos Jobim"
+                    },
+                    {
+                        "id": 22,
+                        "nome": "Miúcha"
+                    }
+                ],
+                "gostar": 0,
+                "naoGostar": 0,
+                "genero": {
+                    "id": 4,
+                    "nome": "Bossa Nova"
+                }
+            }
+        ]
+    }
+]
