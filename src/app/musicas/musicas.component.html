@@ -1,9 +1,14 @@
 <section>
   <h1 class="mb-4 mt-5 border-bottom">Músicas</h1>
   <p>Encontre músicas pelos gêneros musicais</p>
-  <ul>
-    <li *ngFor="let genero of generos">
-      <a [routerLink]="[ '/generos', genero.id ]">{{genero.nome}}</a>
-    </li>
-  </ul>
+
+  <div class="list-group">
+    <a *ngFor="let genero of generos" [routerLink]="['/generos', genero.id]"
+      class="list-group-item list-group-item-action">
+      <div class="d-flex w-100 justify-content-between">
+        <h5 class="mb-1">{{genero.nome}}</h5>
+        <small>{{genero.musicas.length}} música(s)</small>
+      </div>
+    </a>
+  </div>
 </section>

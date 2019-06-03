@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { DiscoService } from '../disco.service';
+import { GenerosService } from '../generos.service';
 
 @Component({
   selector: 'app-musicas',
@@ -9,10 +9,12 @@ import { DiscoService } from '../disco.service';
 export class MusicasComponent implements OnInit {
   generos = [];
 
-  constructor(private disco: DiscoService) { }
+  constructor(private generos$: GenerosService) { }
 
   ngOnInit() {
-    this.generos = this.disco.listaDeGeneros();
+    this.generos$.lista().subscribe(
+      lista => this.generos = lista
+    );
   }
 
 }
