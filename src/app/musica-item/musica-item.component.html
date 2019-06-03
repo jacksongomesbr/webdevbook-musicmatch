@@ -1,6 +1,0 @@
-<a [routerLink]="[ '/musicas', musica.id ]">
-  <strong>{{ musica.titulo }} </strong> -
-  <span *ngFor="let artista of musica.artistas; last as ultimo">
-    {{ artista.nome }}<span *ngIf="!ultimo">, </span>
-  </span>
-</a>
