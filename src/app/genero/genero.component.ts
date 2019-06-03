@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { DiscoService } from '../disco.service';
+import { GenerosService } from '../generos.service';
+import { map, mergeAll } from 'rxjs/operators';
 
 @Component({
   selector: 'app-genero',
@@ -10,12 +11,18 @@ import { DiscoService } from '../disco.service';
 export class GeneroComponent implements OnInit {
   genero = null;
 
-  constructor(private route: ActivatedRoute, private disco: DiscoService) { }
+  constructor(private route: ActivatedRoute, private generos$: GenerosService) { }
 
   ngOnInit() {
-    const id = this.route.snapshot.paramMap.get('id');
-    this.genero = this.disco.encontrarGenero(parseInt(id));
-    this.disco.preencherObjetoGenero(this.genero);
+    this.route.paramMap.pipe(
+      map(params => params.get('id')),
+      map((id: string) => parseInt(id)),
+      map(id => this.generos$.encontrar(id)),
+      mergeAll(),
+    ).subscribe(
+      genero => this.genero = genero
+    );
+
   }
 
 }

@@ -1,9 +1,5 @@
 <section *ngIf="genero">
   <h1 class="mb-4 mt-5 border-bottom">{{genero.nome}}</h1>
   <h2>Músicas</h2>
-  <ul>
-    <li *ngFor="let musica of genero.musicas">
-      <app-musica-item [musica]="musica"></app-musica-item>
-    </li>
-  </ul>
+  <app-lista-de-musicas [musicas]="genero.musicas"></app-lista-de-musicas>
 </section>
