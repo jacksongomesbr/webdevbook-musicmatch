@@ -1,14 +1,23 @@
 <section>
   <h1 class="mb-4 mt-5 border-bottom">Pesquisa</h1>
   <p>Utilize entrada de texto a seguir para realizar a pesquisa de músicas, artistas e gêneros musicais.</p>
-  <input type="text" name="busca" class="form-control form-control-lg" [(ngModel)]="busca">
-  <div class="mt-4">
-    <ul>
-      <li *ngFor="let item of disco.pesquisar(busca)">
-        <a *ngIf="item.tipo == 'música'" [routerLink]="[ '/musicas', item.id ]">{{item.titulo}}</a>
-        <a *ngIf="item.tipo == 'gênero'" [routerLink]="[ '/generos', item.id ]">{{item.nome}}</a>
-        <a *ngIf="item.tipo == 'artista'" [routerLink]="[ '/artistas', item.id ]">{{item.nome}}</a>
-      </li>
-    </ul>
+  <form (submit)="pesquisar()">
+    <div class="input-group">
+      <input type="text" id="busca" name="busca" class="form-control form-control-lg" [(ngModel)]="busca">
+      <div class="input-group-append">
+        <button class="btn btn-primary"><i class="fas fa-search"></i></button>
+      </div>
+    </div>
+  </form>
+  <div class="mt-4" *ngIf="lista">
+    <div class="list-group">
+      <a *ngFor="let item of lista" [routerLink]="getRouterLink(item)" class="list-group-item list-group-item-action">
+        <div class="d-flex w-100 justify-content-between">
+          <h5 *ngIf="item.tipo == 'música'" class="mb-1"><i class="fas fa-music"></i> {{item.titulo}}</h5>
+          <h5 *ngIf="item.tipo == 'gênero'" class="mb-1"><i class="fas fa-tag"></i> {{item.nome}}</h5>
+          <h5 *ngIf="item.tipo == 'artista'" class="mb-1"><i class="fas fa-user"></i> {{item.nome}}</h5>
+        </div>
+      </a>
+    </div>
   </div>
 </section>
