@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { DiscoService } from '../disco.service';
 import { ActivatedRoute } from '@angular/router';
+import { ArtistasService } from '../artistas.service';
+import { map, mergeAll } from 'rxjs/operators';
 
 @Component({
   selector: 'app-artista',
@@ -10,12 +11,17 @@ import { ActivatedRoute } from '@angular/router';
 export class ArtistaComponent implements OnInit {
   artista = null;
 
-  constructor(private disco: DiscoService, private route: ActivatedRoute) { }
+  constructor(private route: ActivatedRoute, private artistas$: ArtistasService) { }
 
   ngOnInit() {
-    const id = this.route.snapshot.paramMap.get('id');
-    this.artista = this.disco.encontrarArtista(parseInt(id));
-    this.disco.preencherObjetoArtista(this.artista);
+    this.route.paramMap.pipe(
+      map(params => params.get('id')),
+      map((id: string) => parseInt(id)),
+      map(id => this.artistas$.encontrar(id)),
+      mergeAll(),
+    ).subscribe(
+      artista => this.artista = artista
+    );
   }
 
 }
