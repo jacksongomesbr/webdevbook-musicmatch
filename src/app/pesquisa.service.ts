@@ -2,32 +2,29 @@ import { Injectable } from '@angular/core';
 import { DadosBaseService } from './dados-base.service';
 import { tap, catchError, map } from 'rxjs/operators';
 
+/**
+ * O serviço `PesquisaService` fornece uma especialização do [`DadosBaseService`]{@link DadosBaseService}
+ * que dá acesso à funcionalidade de pesquisa da API.
+ */
 @Injectable({
   providedIn: 'root'
 })
 export class PesquisaService extends DadosBaseService {
-  URL = 'assets/indice.json';
+  /** A URL da API */
+  URL = 'http://localhost:8000/api/pesquisa/';
 
-  lista() {
-    return this.http.get<any[]>(this.URL)
+  /**
+   * Este método faz uma requisição GET para a API, com o objetivo
+   * de obter resultados que indiquem músicas, artistas e gêneros
+   * que combinam com o critério de busca.
+   * 
+   * @param busca O parâmetro para a pesquisa
+   */
+  lista(busca) {
+    return this.http.get(this.URL.concat(`?search=${busca}`))
       .pipe(
-        tap(_ => console.log('pesquisou o índice')),
-        catchError(this.handleError<any[]>('lista', []))
+        catchError(this.handleError<any>('lista', []))
       );
   }
 
-  listaPorBusca(busca) {
-    return this.lista()
-      .pipe(
-        map(lista => lista.filter(item => {
-          if (item.tipo === 'música') {
-            return item.titulo.toLowerCase().indexOf(busca) != -1;
-          } else {
-            return item.nome.toLowerCase().indexOf(busca) != -1;
-          }
-        })
-        ),
-        tap(_ => console.log(`pesquisando o índice por: ${busca}`))
-      );
-  }
 }
