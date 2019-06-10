@@ -18,22 +18,13 @@ export class HomeComponent implements OnInit {
 
   ngOnInit() {
     this.musicas$.lista()
-      .pipe(
-        map(musicas => musicas.slice(0, 4))
-      )
-      .subscribe(musicas => this.musicas = musicas);
+      .subscribe(data => this.musicas = data.results);
 
     this.artistas$.lista()
-      .pipe(
-        map(artistas => artistas.slice(0, 4))
-      )
-      .subscribe(artistas => this.artistas = artistas);
+      .subscribe(data => this.artistas = data.results);
 
     this.generos$.lista()
-      .pipe(
-        map(generos => generos.slice(0, 4))
-      )
-      .subscribe(generos => this.generos = generos);
+      .subscribe(data => this.generos = data.results);
 
   }
 

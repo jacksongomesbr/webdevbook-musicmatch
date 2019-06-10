@@ -13,7 +13,7 @@ import { ArtistasService } from '../artistas.service';
   styleUrls: ['./musica.component.css']
 })
 export class MusicaComponent implements OnInit {
-  musica: Musica = null;
+  musica = null;
   relacionadas = null;
 
   constructor(private route: ActivatedRoute, private musicas$: MusicasService) { }
@@ -50,8 +50,8 @@ export class MusicaComponent implements OnInit {
   }
 
   atualizarListaDeRelacionadas() {
-    this.musicas$.listaRelacionadas(this.musica)
-      .subscribe(musicas => this.relacionadas = musicas);
+    // this.musicas$.listaRelacionadas(this.musica)
+    //   .subscribe(musicas => this.relacionadas = musicas);
   }
 
 }

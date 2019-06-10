@@ -13,6 +13,15 @@ export class ArtistaComponent implements OnInit {
 
   constructor(private route: ActivatedRoute, private artistas$: ArtistasService) { }
 
+  /**
+   * Esta sobrescrita realiza as operações:
+   * 
+   * * acessa o `paramMap`
+   * * obtém o valor do parâmetro `id` da rota
+   * * converte o valor do parâmetro para string
+   * * usa o serviço [`ArtistasService`]{@link ArtistasService} para encontrar o artista indicado
+   * * avalia a saída (usando o operador `mergeAll`)
+   */
   ngOnInit() {
     this.route.paramMap.pipe(
       map(params => params.get('id')),

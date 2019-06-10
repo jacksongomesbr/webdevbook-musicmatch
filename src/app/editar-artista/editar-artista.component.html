@@ -1,0 +1,42 @@
+<section *ngIf="artista">
+    <div class="mt-5 mb-5">
+      <h1 class=" border-bottom">Editar artista</h1>
+      <p class="small text-muted">Utilize o formulário a seguir para editar as informações do artista "{{artista.nome}}".</p>
+    </div>
+  
+    <form #cadastro="ngForm" (submit)="salvar()">
+      <div *ngIf="validacao$.erro === false" class="alert alert-success">
+        <strong>Sucesso!</strong> Os dados foram cadastrados com sucesso.
+      </div>
+      <div *ngIf="validacao$.erro != null && validacao$.erro !== false" class="alert alert-danger">
+        <strong>Ops!</strong> Não foi possível concluir o cadastro por causa dos erros a seguir.
+      </div>
+      <div class="form-group">
+        <label for="nome">Nome</label>
+        <input type="text" name="nome" id="nome" [(ngModel)]="artista.nome" class="form-control" required
+          [class.is-invalid]="validacao$.campoInvalido(campo_nome) || validacao$.temErro('nome')" #campo_nome="ngModel">
+        <div *ngIf="validacao$.campoInvalido(campo_nome) || validacao$.temErro('nome')" class="invalid-feedback">
+          <span *ngIf="campo_nome.errors.required">
+            Por favor, informe o nome do artista.
+          </span>
+          <span *ngIf="validacao$.temErro('nome')">
+            {{textoErro('nome')}}
+          </span>
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="foto">Foto</label>
+        <div *ngIf="artista.foto" class="mb-3">Foto atual: <a [href]="artista.foto" target="_blank">{{artista.foto}}</a></div>
+        <input type="file" name="foto" id="foto" class="form-control-file" (change)="onChangeFoto($event.target.files)"
+          [class.is-invalid]="validacao$.temErro('foto')">
+        <div *ngIf="validacao$.temErro('foto')" class="invalid-feedback">
+          <span *ngIf="validacao$.temErro('foto')">
+            {{validacao$.textoErro('foto')}}
+          </span>
+        </div>
+      </div>
+      <div>
+        <button class="btn btn-primary" [disabled]="!cadastro.form.valid">Salvar</button>
+      </div>
+    </form>
+  </section>

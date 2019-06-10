@@ -21,9 +21,9 @@ export class PesquisaComponent implements OnInit {
   }
 
   pesquisar() {
-    this.pesquisa$.listaPorBusca(this.busca)
+    this.pesquisa$.lista(this.busca)
       .subscribe(
-        resultado => this.lista = resultado
+        data => this.lista = data.results
       );
   }
 

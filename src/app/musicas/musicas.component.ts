@@ -13,7 +13,7 @@ export class MusicasComponent implements OnInit {
 
   ngOnInit() {
     this.generos$.lista().subscribe(
-      lista => this.generos = lista
+      lista => this.generos = lista.results
     );
   }
 
