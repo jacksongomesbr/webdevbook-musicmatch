@@ -12,6 +12,9 @@ import { GeneroComponent } from './genero/genero.component';
 import { PesquisaComponent } from './pesquisa/pesquisa.component';
 import { HttpClientModule } from '@angular/common/http';
 import { ListaDeMusicasComponent } from './lista-de-musicas/lista-de-musicas.component';
+import { CadastrarArtistaComponent } from './cadastrar-artista/cadastrar-artista.component';
+import { ArtistaListaComponent } from './artista-lista/artista-lista.component';
+import { EditarArtistaComponent } from './editar-artista/editar-artista.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +25,10 @@ import { ListaDeMusicasComponent } from './lista-de-musicas/lista-de-musicas.com
     ArtistaComponent,
     GeneroComponent,
     PesquisaComponent,
-    ListaDeMusicasComponent
+    ListaDeMusicasComponent,
+    CadastrarArtistaComponent,
+    ArtistaListaComponent,
+    EditarArtistaComponent
   ],
   imports: [
     BrowserModule,
