@@ -2,6 +2,25 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.4.0](https://github.com/jacksongomesbr/webdevbook-musicmatch/compare/v1.3.0...v1.4.0) (2019-06-10)
+
+
+### Features
+
+* modificações em componentes para usar/declarar novos serviços ([282714f](https://github.com/jacksongomesbr/webdevbook-musicmatch/commit/282714f))
+* removidos arquivos JSON ([4290202](https://github.com/jacksongomesbr/webdevbook-musicmatch/commit/4290202)), closes [#17](https://github.com/jacksongomesbr/webdevbook-musicmatch/issues/17)
+* **auth:** adiciona o interceptador AuthInterceptor ([044ec9c](https://github.com/jacksongomesbr/webdevbook-musicmatch/commit/044ec9c)), closes [#14](https://github.com/jacksongomesbr/webdevbook-musicmatch/issues/14)
+* **components:** melhorias nos componentes para usar as atualizações dos serviços ([09cf74d](https://github.com/jacksongomesbr/webdevbook-musicmatch/commit/09cf74d))
+* **form:** adiciona o componente ValicacaoFormUtilService ([4b51b67](https://github.com/jacksongomesbr/webdevbook-musicmatch/commit/4b51b67)), closes [#12](https://github.com/jacksongomesbr/webdevbook-musicmatch/issues/12)
+* **service:** adicionado serviço LoginService ([ad8b0fd](https://github.com/jacksongomesbr/webdevbook-musicmatch/commit/ad8b0fd)), closes [#16](https://github.com/jacksongomesbr/webdevbook-musicmatch/issues/16)
+* **service:** melhorado o serviço GenerosService ([364fc94](https://github.com/jacksongomesbr/webdevbook-musicmatch/commit/364fc94)), closes [#9](https://github.com/jacksongomesbr/webdevbook-musicmatch/issues/9)
+* **service:** melhorado o serviço MusicasService ([5add562](https://github.com/jacksongomesbr/webdevbook-musicmatch/commit/5add562)), closes [#10](https://github.com/jacksongomesbr/webdevbook-musicmatch/issues/10)
+* **services:** adiciona o serviço AuthService ([ddef786](https://github.com/jacksongomesbr/webdevbook-musicmatch/commit/ddef786)), closes [#15](https://github.com/jacksongomesbr/webdevbook-musicmatch/issues/15)
+* **services:** melhorado serviço ArtistasService ([370341c](https://github.com/jacksongomesbr/webdevbook-musicmatch/commit/370341c)), closes [#8](https://github.com/jacksongomesbr/webdevbook-musicmatch/issues/8)
+* **services:** melhoria no serviço PesquisaService ([c59f84c](https://github.com/jacksongomesbr/webdevbook-musicmatch/commit/c59f84c)), closes [#11](https://github.com/jacksongomesbr/webdevbook-musicmatch/issues/11)
+
+
+
 ## [1.3.0](https://github.com/jacksongomesbr/webdevbook-musicmatch/compare/v1.2.0...v1.3.0) (2019-06-03)
 
 
