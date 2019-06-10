@@ -1,60 +1,40 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
-import { isNumber, isString, isObject } from 'util';
-import { Genero } from './models/genero';
-import { Observable, of } from 'rxjs';
-import { catchError, map, tap, filter } from 'rxjs/operators';
+import { catchError } from 'rxjs/operators';
 import { DadosBaseService } from './dados-base.service';
 
-
+/**
+ * A classe [`GenerosService`]{@link GenerosService} é uma especialização
+ * de [`DadosBaseService`]{@link DadosBaseService} que fornece
+ * serviços para acessar a API e tratar com dados da entidade "gênero".
+ */
 @Injectable({
   providedIn: 'root'
 })
 export class GenerosService extends DadosBaseService {
-  URL = 'assets/generos.json';
+  /** A URL da API */
+  URL = 'http://localhost:8000/api/generos/';
 
 
   /**
-   * Faz uma requisição HTTP para o arquivo `generos.json`
-   * para retornar um `Observable` com a lista
-   * dos gêneros musicais
+   * Este método faz uma requisição GET para a API, com o objetivo
+   * de obter a lista dos gêneros.
    */
-  lista(): Observable<Genero[]> {
-    return this.http.get<Genero[]>(this.URL)
+  lista() {
+    return this.http.get(this.URL)
       .pipe(
-        tap(_ => console.log('buscou gêneros musicais')),
-        catchError(this.handleError<Genero[]>('lista', []))
+        catchError(this.handleError<any>('lista', []))
       );
   }
 
   /**
-   * Faz uma requisição HTTP para o arquivo `generos.json`
-   * utilizando o método []`lista()`]{@link GenerosService#lista}.
-   * Ao obter retorno, aplica o operador `map` para transformar
-   * o resultado em um objeto único (ao invés de retornar a lista).
+   * Faz uma requisição GET para a API, com o objetivo de obter os
+   * dados de um gênero (identificado por `id`).
    * 
-   * @param genero o identificador ou o nome do gênero que será encontrado
+   * @param genero o identificador do gênero 
    */
-  encontrar(genero) {
-    return this.lista()
-      .pipe(
-        map(generos => {
-          if (isNumber(genero)) {
-            return generos.find(g => g.id == genero);
-          } else {
-            return generos.find(g => g.nome == genero);
-          }
-        }),
-        tap(_ => console.log(`buscou um gênero musical: ${genero}`))
-      );
+  encontrar(id) {
+    return this.http.get(this.URL.concat(`${id}/`));
   }
 
-  pesquisar(busca): Observable<Genero[]> {
-    return this.lista().pipe(
-      map(generos =>
-        generos.filter(genero => genero.nome.toLowerCase().indexOf(busca) != -1)
-      )
-    );
-  }
 
 }
