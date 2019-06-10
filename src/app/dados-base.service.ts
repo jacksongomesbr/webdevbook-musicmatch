@@ -2,11 +2,22 @@ import { Injectable } from '@angular/core';
 import { Observable, of } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 
+/**
+ * A classe `DadosBaseService` fornece uma classe genérica para
+ * serviços que utilizam o `HttpClient` para fazer requisições
+ * HTTP a uma API.
+ * 
+ */
 @Injectable({
   providedIn: 'root'
 })
 export class DadosBaseService {
 
+  /**
+   * O construtor injeta uma instância do serviço `HttpClient`.
+   * 
+   * @param http O serviço `HttpClient`
+   */
   constructor(protected http: HttpClient) { }
 
   /**
