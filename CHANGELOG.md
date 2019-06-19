@@ -2,6 +2,15 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.5.0](https://github.com/jacksongomesbr/webdevbook-musicmatch/compare/v1.4.0...v1.5.0) (2019-06-19)
+
+
+### Features
+
+* (componentes) adiciona botão para acessar a tela de cadastrar artista ([b40c45c](https://github.com/jacksongomesbr/webdevbook-musicmatch/commit/b40c45c))
+
+
+
 ## [1.4.0](https://github.com/jacksongomesbr/webdevbook-musicmatch/compare/v1.3.0...v1.4.0) (2019-06-10)
 
 
