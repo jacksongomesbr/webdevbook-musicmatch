@@ -31,6 +31,7 @@ export class CadastrarArtistaComponent implements OnInit {
     private validacao$: ValicacaoFormUtilService) { }
 
   ngOnInit() {
+    this.validacao$.erro = null;
   }
 
   /**
