@@ -2,6 +2,29 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [2.0.0](https://github.com/jacksongomesbr/webdevbook-musicmatch/compare/v1.5.0...v2.0.0) (2019-07-03)
+
+
+### Bug Fixes
+
+* **app:** corrige estrutura do módulo App (principal) ([39759c3](https://github.com/jacksongomesbr/webdevbook-musicmatch/commit/39759c3))
+* **app:** remove estruturas de models desnecessárias (já que os serviços não precisam mais ser tipados) ([b7a7c27](https://github.com/jacksongomesbr/webdevbook-musicmatch/commit/b7a7c27))
+* **shared:** corrige importação do AuthService ([46ec94e](https://github.com/jacksongomesbr/webdevbook-musicmatch/commit/46ec94e))
+* **shared:** corrige o nome do servico ValidacaoFormUtil ([d9a62c5](https://github.com/jacksongomesbr/webdevbook-musicmatch/commit/d9a62c5)), closes [#23](https://github.com/jacksongomesbr/webdevbook-musicmatch/issues/23)
+
+
+### Features
+
+* **admin:** cria o módulo Admin e sua estrutura de componentes ([552ca00](https://github.com/jacksongomesbr/webdevbook-musicmatch/commit/552ca00)), closes [#22](https://github.com/jacksongomesbr/webdevbook-musicmatch/issues/22) [#21](https://github.com/jacksongomesbr/webdevbook-musicmatch/issues/21) [#20](https://github.com/jacksongomesbr/webdevbook-musicmatch/issues/20) [#19](https://github.com/jacksongomesbr/webdevbook-musicmatch/issues/19) [#18](https://github.com/jacksongomesbr/webdevbook-musicmatch/issues/18)
+* **publico:** cria o módulo Publico e sua estrutura de componentes ([336c930](https://github.com/jacksongomesbr/webdevbook-musicmatch/commit/336c930))
+
+
+### BREAKING CHANGES
+
+* **admin:** nova estrutura do app, com módulo publico e admin protegido por senha para tarefas administrativas
+
+
+
 ## [1.5.0](https://github.com/jacksongomesbr/webdevbook-musicmatch/compare/v1.4.0...v1.5.0) (2019-06-19)
 
 
