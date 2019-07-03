@@ -1,0 +1,58 @@
+<section *ngIf="estatisticas else carregando">
+    <div class="border-bottom mb-4 mt-5">
+        <h1>Área administrativa</h1>
+    </div>
+    <p>A área administrativa do MusicMatch dá acesso ao gerenciamento das informações sobre usuários, artistas, músicas
+        e gêneros musicais.</p>
+
+    <div class="row">
+        <div class="col">
+            <div class="card">
+                <div class="row no-gutters">
+                    <div class="col-md-4 text-center p-2" style="background-color: orange;">
+                        <i class="fas fa-users" style="font-size:80px;color:white"></i>
+                    </div>
+                    <div class="col-md-8">
+                        <div class="card-body">
+                            <h5 class="card-title">Artistas</h5>
+                            <p class="card-text">{{estatisticas.artistas}}</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col">
+            <div class="card">
+                <div class="row no-gutters">
+                    <div class="col-md-4 text-center p-2" style="background-color:  red;">
+                        <i class="fas fa-tags" style="font-size:80px;color:white"></i>
+                    </div>
+                    <div class="col-md-8">
+                        <div class="card-body">
+                            <h5 class="card-title">Gêneros musicais</h5>
+                            <p class="card-text">{{estatisticas.generos}}</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col">
+            <div class="card">
+                <div class="row no-gutters">
+                    <div class="col-md-4 text-center p-2" style="background-color: blue;">
+                        <i class="fas fa-music" style="font-size:80px;color:white"></i>
+                    </div>
+                    <div class="col-md-8">
+                        <div class="card-body">
+                            <h5 class="card-title">Músicas</h5>
+                            <p class="card-text">{{estatisticas.musicas}}</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<ng-template #carregando>
+    <section>Aguarde. Carregando...</section>
+</ng-template>

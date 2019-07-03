@@ -1,0 +1,95 @@
+<section>
+  <div class="d-flex justify-content-between align-items-center border-bottom mb-4 mt-5">
+    <h1>Cadastrar música</h1>
+    <div>
+      <a class="btn btn-link" routerLink="/admin/musicas"><i class="fas fa-arrow-left"></i> Voltar para a lista</a>
+    </div>
+  </div>
+  <p class="small text-muted">
+    Utilize o formulário a seguir para cadastrar uma música.
+  </p>
+
+  <form #cadastro="ngForm" (submit)="salvar()">
+    <div *ngIf="validacao$.erro === false" class="alert alert-success">
+      <strong>Sucesso!</strong> Os dados foram cadastrados com sucesso.
+    </div>
+    <div *ngIf="validacao$.erro" class="alert alert-danger">
+      <strong>Ops!</strong> Não foi possível concluir o cadastro por causa dos erros a seguir.
+    </div>
+    <div class="form-group">
+      <label for="titulo">Título</label>
+      <input type="text" name="titulo" id="titulo" [(ngModel)]="titulo" class="form-control" required
+        [class.is-invalid]="validacao$.campoInvalido(campo_titulo) || validacao$.temErro('titulo')"
+        #campo_titulo="ngModel">
+      <div *ngIf="validacao$.campoInvalido(campo_titulo) || validacao$.temErro('titulo')" class="invalid-feedback">
+        <span *ngIf="campo_titulo.errors && campo_titulo.errors.required">
+          Por favor, informe o título da música.
+        </span>
+        <span *ngIf="validacao$.temErro('titulo')">
+          {{validacao$.textoErro('titulo')}}
+        </span>
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="genero">Gênero</label>
+      <select class="form-control" name="genero" id="genero" [(ngModel)]="genero" required
+        [class.is-invalid]="validacao$.campoInvalido(campo_genero) || validacao$.temErro('genero_id')"
+        #campo_genero="ngModel">
+        <option *ngFor="let genero of generos" [value]="genero.id">{{genero.nome}}</option>
+      </select>
+      <div *ngIf="validacao$.campoInvalido(campo_genero) || validacao$.temErro('genero_id')" class="invalid-feedback">
+        <span *ngIf="campo_genero.errors && campo_genero.errors.required">
+          Por favor, informe o gênero musical
+        </span>
+        <span *ngIf="validacao$.temErro('genero_id')">
+          {{validacao$.textoErro('genero_id')}}
+        </span>
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="artistas">Artista(s)</label>
+      <select class="form-control" name="artistas" id="artistas" [(ngModel)]="artistas_selecionados" required
+        [class.is-invalid]="validacao$.campoInvalido(campo_artistas) || validacao$.temErro('artistas_ids')"
+        #campo_artistas="ngModel" multiple>
+        <option *ngFor="let artista of artistas" [value]="artista.id">{{artista.nome}}</option>
+      </select>
+      <div *ngIf="validacao$.campoInvalido(campo_artistas) || validacao$.temErro('artistas_ids')"
+        class="invalid-feedback">
+        <span *ngIf="campo_artistas.errors && campo_artistas.errors.required">
+          Por favor, informe pelo menos um artista
+        </span>
+        <span *ngIf="validacao$.temErro('artistas_ids')">
+          {{validacao$.textoErro('artistas_ids')}}
+        </span>
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="urlDoVideo">URL do vídeo</label>
+      <input type="url" name="urlDoVideo" id="urlDoVideo" [(ngModel)]="urlDoVideo" class="form-control"
+        [class.is-invalid]="validacao$.campoInvalido(campo_url) || validacao$.temErro('url_do_video')"
+        #campo_url="ngModel">
+      <div *ngIf="validacao$.campoInvalido(campo_url) || validacao$.temErro('url_do_video')" class="invalid-feedback">
+        <span *ngIf="validacao$.temErro('url_do_video')">
+          {{validacao$.textoErro('url_do_video')}}
+        </span>
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="letra">Letra</label>
+      <textarea class="form-control" rows="10" name="letra" id="letra" [(ngModel)]="letra" required
+        [class.is-invalid]="validacao$.campoInvalido(campo_letra) || validacao$.temErro('letra')"
+        #campo_letra="ngModel"></textarea>
+      <div *ngIf="validacao$.campoInvalido(campo_letra) || validacao$.temErro('letra')" class="invalid-feedback">
+        <span *ngIf="campo_letra.errors && campo_letra.errors.required">
+          Por favor, informe a letra da música
+        </span>
+        <span *ngIf="validacao$.temErro('letra')">
+          {{validacao$.textoErro('letra')}}
+        </span>
+      </div>
+    </div>
+    <div>
+      <button class="btn btn-primary" [disabled]="!cadastro.form.valid">Salvar</button>
+    </div>
+  </form>
+</section>

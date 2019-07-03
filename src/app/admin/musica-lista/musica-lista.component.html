@@ -1,0 +1,55 @@
+<section *ngIf="musicas else carregando">
+  <div class="d-flex justify-content-between align-items-center border-bottom mb-4 mt-5">
+    <h1>Músicas</h1>
+    <div>
+      <a class="btn btn-success" routerLink="/admin/musicas/cadastrar"><i class="fas fa-plus"></i> Cadastrar</a>
+    </div>
+  </div>
+
+  <div *ngIf="resultadoExcluir === true" class="alert alert-success">
+    <strong>Sucesso!</strong> A música foi excluída com sucesso.
+  </div>
+  <div *ngIf="resultadoExcluir === false" class="alert alert-danger">
+    <strong>Ops!</strong> {{resultadoExcluir}}
+  </div>
+
+  <table class="table table-bordered table-striped table-hover">
+    <thead>
+      <tr>
+        <th scope="col">Título</th>
+        <th scope="col">Gênero</th>
+        <th scope="col" width="150px">Ações</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let musica of musicas">
+        <td>
+          <div><strong>{{musica.titulo}}</strong></div>
+          <span *ngFor="let artista of musica.artistas; last as ultimo">
+              {{ artista.nome }}<span *ngIf="!ultimo">, </span>
+            </span>
+        </td>
+        <td>
+          {{musica.genero.nome}}
+        </td>
+        <td>
+          <button class="btn btn-danger btn-sm mr-2" (click)="excluir(musica)">
+            <i class="fas fa-trash-alt"></i>
+          </button>
+          <button class="btn btn-success btn-sm mr-2" (click)="editar(musica)">
+            <i class="fas fa-edit"></i>
+          </button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="d-flex justify-content-end">
+    <pagination [totalItems]="count" [rotate]="true" [itemsPerPage]="limit" (pageChanged)="pageChanged($event)"
+      [maxSize]="5" [(ngModel)]="offset" previousText="&lsaquo;" nextText="&rsaquo;" firstText="&laquo;"
+      lastText="&raquo;"></pagination>
+  </div>
+</section>
+<ng-template #carregando>
+  <section>Aguarde. Carregando...</section>
+</ng-template>

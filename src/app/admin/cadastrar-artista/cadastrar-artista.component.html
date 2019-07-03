@@ -1,0 +1,46 @@
+<section>
+  <div class="d-flex justify-content-between align-items-center border-bottom mb-4 mt-5">
+    <h1>Cadastrar artista</h1>
+    <div>
+      <a class="btn btn-link" routerLink="/admin/artistas"><i class="fas fa-arrow-left"></i> Voltar para a lista</a>
+    </div>
+  </div>
+  <p class="small text-muted">
+    Utilize o formulário a seguir para cadastrar um artista.
+  </p>
+
+  <form #cadastro="ngForm" (submit)="salvar()">
+    <div *ngIf="validacao$.erro === false" class="alert alert-success">
+      <strong>Sucesso!</strong> Os dados foram cadastrados com sucesso.
+    </div>
+    <div *ngIf="validacao$.erro" class="alert alert-danger">
+      <strong>Ops!</strong> Não foi possível concluir o cadastro por causa dos erros a seguir.
+    </div>
+    <div class="form-group">
+      <label for="nome">Nome</label>
+      <input type="text" name="nome" id="nome" [(ngModel)]="nome" class="form-control" required
+        [class.is-invalid]="validacao$.campoInvalido(campo_nome) || validacao$.temErro('nome')" #campo_nome="ngModel">
+      <div *ngIf="validacao$.campoInvalido(campo_nome) || validacao$.temErro('nome')" class="invalid-feedback">
+        <span *ngIf="campo_nome.errors.required">
+          Por favor, informe o nome do artista.
+        </span>
+        <span *ngIf="validacao$.temErro('nome')">
+          {{validacao$.textoErro('nome')}}
+        </span>
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="foto">Foto</label>
+      <input type="file" name="foto" id="foto" class="form-control-file" (change)="onChangeFoto($event.target.files)"
+        [class.is-invalid]="validacao$.temErro('foto')">
+      <div *ngIf="validacao$.temErro('foto')" class="invalid-feedback">
+        <span *ngIf="validacao$.temErro('foto')">
+          {{validacao$.textoErro('foto')}}
+        </span>
+      </div>
+    </div>
+    <div>
+      <button class="btn btn-primary" [disabled]="!cadastro.form.valid">Salvar</button>
+    </div>
+  </form>
+</section>
