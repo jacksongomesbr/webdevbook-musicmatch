@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { DadosBaseService } from './dados-base.service';
+import { DadosBaseService } from '../dados-base/dados-base.service';
 import { catchError } from 'rxjs/operators';
 
 /**
@@ -10,28 +10,8 @@ import { catchError } from 'rxjs/operators';
   providedIn: 'root'
 })
 export class ArtistasService extends DadosBaseService {
-  URL = 'http://localhost:8000/api/artistas/';
-
-  /**
-   * Este método realiza uma requisição GET à API com o objetivo
-   * de obter a lista de artistas.
-   */
-  lista() {
-    return this.http.get(this.URL)
-      .pipe(
-        catchError(this.handleError<any>('lista', []))
-      );
-  }
-
-  /**
-   * Este método realiza uma requisição GET à API com o objetivo
-   * de obter as informações de um artista, indicado pelo parâmetro
-   * `identificador`.
-   * 
-   * @param id O identificador do artista
-   */
-  encontrar(id) {
-    return this.http.get(this.URL.concat(`${id}/`));
+  getApiUrl() {
+    return super.getApiUrl().concat('artistas/');
   }
 
   /**
@@ -61,7 +41,7 @@ export class ArtistasService extends DadosBaseService {
     if (foto) {
       formData.append('foto', foto, foto.name);
     }
-    return this.http.post(this.URL, formData);
+    return this.http.post(this.getApiUrl(), formData);
   }
 
   /**
@@ -79,16 +59,10 @@ export class ArtistasService extends DadosBaseService {
     if (foto) {
       formData.append('foto', foto, foto.name);
     }
-    return this.http.patch(this.URL.concat(`${id}/`), formData);
+    return this.http.patch(this.getApiUrl().concat(`${id}/`), formData);
   }
 
-  /**
-   * Este método exclui um artista, realizando uma requisição
-   * DELETE para a API.
-   * 
-   * @param id O identificador do artista
-   */
-  excluir(id) {
-    return this.http.delete(this.URL.concat(`${id}/`));
+  removerFoto(id) {
+    return this.http.post(this.getApiUrl().concat(`${id}/remover_foto/`), {});
   }
 }

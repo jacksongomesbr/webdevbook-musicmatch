@@ -13,6 +13,7 @@ import { Injectable } from '@angular/core';
 })
 export class AuthService {
   keyname = 'auth-data';
+  redirectUrl: string;
 
   constructor() {
   }

@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { DadosBaseService } from './dados-base.service';
+import { DadosBaseService } from '../dados-base/dados-base.service';
 import { tap, catchError, map } from 'rxjs/operators';
 
 /**
@@ -10,8 +10,9 @@ import { tap, catchError, map } from 'rxjs/operators';
   providedIn: 'root'
 })
 export class PesquisaService extends DadosBaseService {
-  /** A URL da API */
-  URL = 'http://localhost:8000/api/pesquisa/';
+  getApiUrl() {
+    return super.getApiUrl().concat('pesquisa/');
+  }
 
   /**
    * Este método faz uma requisição GET para a API, com o objetivo
@@ -20,11 +21,8 @@ export class PesquisaService extends DadosBaseService {
    * 
    * @param busca O parâmetro para a pesquisa
    */
-  lista(busca) {
-    return this.http.get(this.URL.concat(`?search=${busca}`))
-      .pipe(
-        catchError(this.handleError<any>('lista', []))
-      );
+  lista(busca?) {
+    return this.http.get(this.getApiUrl().concat(`?search=${busca}`));
   }
 
 }
