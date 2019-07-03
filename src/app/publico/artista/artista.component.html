@@ -1,0 +1,12 @@
+<section *ngIf="artista">
+
+  <div class="mt-5 mb-5">
+    <img [src]="artista.foto" class="rounded-circle float-left mr-2" style="width: 64px; height: 64px;"  [alt]="artista.nome">
+    <h1 class=" border-bottom">{{artista.nome}}</h1>
+    <p class="small text-muted">Até o momento temos {{artista.musicas.length}} música(s) deste(a) artista.</p>
+    <div class="clearfix"></div>
+  </div>
+
+  <h2 class="mt-5">Músicas</h2>
+  <app-lista-de-musicas [musicas]="artista.musicas"></app-lista-de-musicas>
+</section>

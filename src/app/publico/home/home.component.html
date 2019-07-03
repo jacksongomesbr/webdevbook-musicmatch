@@ -1,0 +1,42 @@
+<div class="jumbotron jumbotron-fluid mt-5"
+  style="background-image: url(https://www.worshipbackgroundsforfree.com/wp-content/uploads/2012/11/Screen-shot-2012-11-20-at-8.31.59-AM.png); background-size: cover">
+  <div class="container p-5">
+    <h1 class="display-2 text-white">MusicMatch</h1>
+    <p class="lead text-white">Encontre informações sobre suas músicas e saiba ainda mais sobre as suas favoritas</p>
+  </div>
+</div>
+
+<section class="mt-5">
+  <div class="row">
+    <div class="col">
+      <h3 class="display-3">Músicas</h3>
+      <app-lista-de-musicas [musicas]="musicas"></app-lista-de-musicas>
+    </div>
+    <div class="col">
+      <h3 class="display-3">Artistas</h3>
+      <div class="list-group">
+        <a *ngFor="let artista of artistas" [routerLink]="['/artistas', artista.id]"
+          class="list-group-item list-group-item-action">
+          <div class="d-flex w-100 justify-content-between">
+            <img [src]="artista.foto" class="rounded-circle" style="width: 32px; height: 32px;">
+            <h5 class="mb-1">{{artista.nome}}</h5>
+            <small>{{artista.musicas.length}} música(s)</small>
+          </div>
+        </a>
+      </div>
+    </div>
+    <div class="col">
+      <h3 class="display-3">Gêneros</h3>
+      <div class="list-group">
+          <a *ngFor="let genero of generos" [routerLink]="['/generos', genero.id]"
+            class="list-group-item list-group-item-action">
+            <div class="d-flex w-100 justify-content-between">
+              <h5 class="mb-1">{{genero.nome}}</h5>
+              <small>{{genero.musicas.length}} música(s)</small>
+            </div>
+          </a>
+        </div>
+    </div>
+  </div>
+
+</section>

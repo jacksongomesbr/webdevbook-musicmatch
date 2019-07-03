@@ -24,8 +24,16 @@
       <span class="badge badge-danger bg-dark">{{musica.naoGostar}}</span>
     </button>
   </div>
-  <div *ngIf="musica.letra" style="white-space: pre-line">
-    {{musica.letra}}
+  <div class="mb-3 mt-3">
+    <div class="row">
+      <div class="col" *ngIf="musica.letra" style="white-space: pre-line">
+        {{musica.letra}}
+      </div>
+      <div class="col" *ngIf="musica.url_do_video">
+        <iframe width="100%" height="300" [src]="musica.url_do_video" frameborder="0"
+          allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+      </div>
+    </div>
   </div>
   <div class="mt-4" *ngIf="relacionadas">
     <app-lista-de-musicas [musicas]="relacionadas"></app-lista-de-musicas>

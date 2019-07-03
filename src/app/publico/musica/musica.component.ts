@@ -1,11 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, ParamMap } from '@angular/router';
-import { MusicasService } from '../musicas.service';
-import { Musica } from '../models/musica';
-import { GenerosService } from '../generos.service';
-import { forkJoin, Observable, of, from, zip } from 'rxjs';
-import { map, tap, switchMap, single, first, mergeAll, concatAll, zipAll, delay, share } from 'rxjs/operators';
-import { ArtistasService } from '../artistas.service';
+import { MusicasService } from '../../shared/services/musicas/musicas.service';
+import { DomSanitizer } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-musica',
@@ -16,7 +12,9 @@ export class MusicaComponent implements OnInit {
   musica = null;
   relacionadas = null;
 
-  constructor(private route: ActivatedRoute, private musicas$: MusicasService) { }
+  constructor(private route: ActivatedRoute,
+    private musicas$: MusicasService,
+    private sanitizer: DomSanitizer) { }
 
   ngOnInit() {
     this.route.paramMap
@@ -24,7 +22,12 @@ export class MusicaComponent implements OnInit {
         this.relacionadas = null;
         const id = params.get('id');
         this.musicas$.encontrar(parseInt(id))
-          .subscribe(musica => this.musica = musica);
+          .subscribe(musica => {
+            this.musica = musica;
+            if (this.musica.url_do_video) {
+              this.musica.url_do_video = this.sanitizer.bypassSecurityTrustResourceUrl(this.musica.url_do_video);
+            }
+          });
       });
 
     // this.route.paramMap.pipe(
@@ -38,14 +41,18 @@ export class MusicaComponent implements OnInit {
   }
 
   gostar() {
-    this.musica.gostar = 1;
-    this.musica.naoGostar = 0;
-    this.atualizarListaDeRelacionadas();
+    this.musicas$.gostar(this.musica.id)
+      .subscribe(
+        musica => this.musica = musica
+      );
+    // this.atualizarListaDeRelacionadas();
   }
 
   naoGostar() {
-    this.musica.gostar = 0;
-    this.musica.naoGostar = 1;
+    this.musicas$.naoGostar(this.musica.id)
+      .subscribe(
+        musica => this.musica = musica
+      );
     this.atualizarListaDeRelacionadas();
   }
 

@@ -1,0 +1,52 @@
+<section>
+  <h1 class="mb-4 mt-5 border-bottom">Login</h1>
+  <div class="row">
+    <div class="col">
+      <p>Utilize o formulário ao lado para informar as suas credenciais e, assim, obter acesso à área admnistrativa, que
+        permite, dentre outras funcionalidades:</p>
+      <ul>
+        <li>gerenciar o cadastro de usuários</li>
+        <li>gerenciar o cadastro de artistas</li>
+        <li>gerenciar o cadastro de gêneros musicais</li>
+        <li>gerenciar o cadastro de musicas</li>
+      </ul>
+    </div>
+    <div class="col-4">
+      <form #login="ngForm" (submit)="onSubmit(login)">
+        <div *ngIf="validacao$.erro === true" class="alert alert-danger">
+          <strong>Ops!</strong> Ocorreu um erro ao tentar entrar no sistema. Verifique seu nome de usuário e senha e
+          tente novamente dentro de instantes.
+        </div>
+        <div class="form-group">
+          <input type="text" name="nome" id="nome" class="form-control form-control-lg" placeholder="Nome do usuário"
+            [(ngModel)]="username" #campo_nome="ngModel" required
+            [class.is-invalid]="validacao$.campoInvalido(campo_nome) || validacao$.temErro('username')">
+          <div *ngIf="validacao$.campoInvalido(campo_nome) || validacao$.temErro('nome')" class="invalid-feedback">
+            <span *ngIf="campo_nome.errors.required">
+              Por favor, informe o nome do usuário.
+            </span>
+            <span *ngIf="validacao$.temErro('nome')">
+              {{validacao$.textoErro('nome')}}
+            </span>
+          </div>
+        </div>
+        <div class="form-group">
+          <input type="password" name="senha" id="senha" class="form-control form-control-lg" placeholder="Senha"
+            [(ngModel)]="password" #campo_senha="ngModel" required
+            [class.is-invalid]="validacao$.campoInvalido(campo_senha) || validacao$.temErro('password')">
+          <div *ngIf="validacao$.campoInvalido(campo_senha) || validacao$.temErro('password')" class="invalid-feedback">
+            <span *ngIf="campo_senha.errors.required">
+              Por favor, informe a senha.
+            </span>
+            <span *ngIf="validacao$.temErro('password')">
+              {{validacao$.textoErro('password')}}
+            </span>
+          </div>
+        </div>
+        <div class="form-row">
+          <button class="btn btn-primary" [disabled]="!login.form.valid">Entrar</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</section>

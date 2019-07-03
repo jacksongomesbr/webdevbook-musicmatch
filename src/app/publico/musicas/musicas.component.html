@@ -9,6 +9,9 @@
         <h5 class="mb-1">{{genero.nome}}</h5>
         <small>{{genero.musicas.length}} música(s)</small>
       </div>
+      <small class="text-muted" *ngIf="genero.musicas.length > 1">
+        <strong>{{genero.musicas[0].titulo}}</strong> e outra(s) {{genero.musicas.length-1}} música(s)
+      </small>
     </a>
   </div>
 </section>
